@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+
+/** Components */
+import Header from './components/Header';
 
 function App() {
   return (
-    <div className="App">
-        <header className="App-header">
-          <h1>React usando Redux</h1>
-        </header>
-    </div>
+    <Fragment>
+        <Header />
+    </Fragment>
   );
 }
 

@@ -1,8 +1,26 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 const Products = () => {
     return (
-        <h2>Productos</h2>
+        <Fragment>
+            <h2 className="text-center mt-5">Productos</h2>
+            <table class="table mt-4">
+                <thead class="thead-light">    
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Laptop</td>
+                        <td>300</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </Fragment>
     );
 }
 

@@ -7,9 +7,10 @@ const store = createStore(
     reducer,                                        // Todos los reducers
     compose( 
         applyMiddleware( thunk ),                   // Implementa 'thunk' como Middleware del Store
-        window .__REDUX_DEVTOOLS_EXTENSION__        // Detecta si estamos usando Redux DevTools
-        && window .__REDUX_DEVTOOLS_EXTENSION__()
-    )
+        typeof window === 'object' && typeof window .__REDUX_DEVTOOLS_EXTENSION__  !== 'undefined'      // Valida si estamos usando Redux DevTools en nuestro navegador
+            ?   window .__REDUX_DEVTOOLS_EXTENSION__()      // Detecta Redux DevTools
+            :   f => f                                      // Retorna mensaje de error
+    )       
 );
 
 export default store;

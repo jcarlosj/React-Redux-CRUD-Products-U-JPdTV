@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 /** Actions (Redux) */
 import { actionCreateProduct } from '../../actions/products-actions';
 
-const CreateProduct = () => {
+const CreateProduct = ({ history }) => {
 
     const 
     /** Define Component State */
@@ -43,6 +43,8 @@ const CreateProduct = () => {
             name,
             price
         });
+
+        history .push( '/' );   // Redirecciona a listado de productos
         
     }
 

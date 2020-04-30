@@ -1,6 +1,7 @@
 import { ADD_PRODUCT, SUCCESSFULLY_ADDED_PRODUCT, ERROR_ADDING_PRODUCT } from '../types';
 
-import clientAxios from '../config/axios';
+import clientAxios from '../config/axios';  // Client Axios
+import Swal from 'sweetalert2';             // Dependency
 
 /** Las funcionalidades definidas aquí generalmente son consumidas por las vistas/components */
 export const actionCreateProduct = ( product ) => {
@@ -13,9 +14,23 @@ export const actionCreateProduct = ( product ) => {
         try {
             await clientAxios .post( '/products', product );
             dispatch( addedSuccessfully( product ) );
+
+            /** Implementa Alerta */
+            Swal .fire(
+                'Correcto!',
+                'El producto agregó exitosamente',
+                'success'
+            ); 
         } catch ( error ) {
             console .log( error );
             dispatch( errorAdding( true ) );
+
+            /** Implementa Alerta */
+            Swal .fire({
+                icon: 'error',
+                title: 'Oops!',
+                text: 'Fallo al agregar el producto. Intentalo de nuevo.'
+            });
         } 
     }
 }

@@ -7,11 +7,11 @@ export const actionCreateProduct = ( product ) => {
 
     console .log( 'product', product );
     
-    return ( dispatch ) => {      
+    return async ( dispatch ) => {      
         dispatch( add() );
 
         try {
-            clientAxios .post( '/products', product );
+            await clientAxios .post( '/products', product );
             dispatch( addedSuccessfully( product ) );
         } catch ( error ) {
             console .log( error );

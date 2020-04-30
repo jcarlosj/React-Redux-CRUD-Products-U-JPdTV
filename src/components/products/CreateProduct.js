@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 /** Actions (Redux) */
 import { actionCreateProduct } from '../../actions/products-actions';
@@ -11,6 +11,9 @@ const CreateProduct = () => {
         name: '',
         price: 0
     });
+
+    const loading = useSelector( state => state .products .loading );   // Accede al State 'products' del Store
+    const error = useSelector( state => state .products .error );       // Accede al State 'products' del Store
 
     const { name, price } = dataForm;   // Destructuring Data Form
  
@@ -79,6 +82,14 @@ const CreateProduct = () => {
                                 type="submit"
                                 className="btn btn-primary d-block w-100"
                             >Agregar</button>
+                            { loading 
+                                ?   <p>Cargando</p>
+                                :   null
+                            }
+                            { error 
+                                ?   <p className="alert alert-danger mt-2 p-2 text-center">Hubo un error</p>
+                                :   null
+                            }
                         </form>
                     </div>
                 </div>

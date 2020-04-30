@@ -3,5 +3,5 @@ import { combineReducers } from 'redux';      // Official React bindings for Red
 import productsReducer from './products-reducer';   // Reducer
 
 export default combineReducers({
-    products: productsReducer
+    products: productsReducer           // products será el nombre del State para el Reducer de Productos
 });

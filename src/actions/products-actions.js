@@ -1,5 +1,7 @@
 import { ADD_PRODUCT, SUCCESSFULLY_ADDED_PRODUCT, ERROR_ADDING_PRODUCT } from '../types';
 
+import clientAxios from '../config/axios';
+
 /** Las funcionalidades definidas aquí generalmente son consumidas por las vistas/components */
 export const actionCreateProduct = ( product ) => {
 
@@ -9,10 +11,12 @@ export const actionCreateProduct = ( product ) => {
         dispatch( add() );
 
         try {
+            clientAxios .post( '/products', product );
             dispatch( addedSuccessfully( product ) );
         } catch ( error ) {
+            console .log( error );
             dispatch( errorAdding( true ) );
-        }
+        } 
     }
 }
 

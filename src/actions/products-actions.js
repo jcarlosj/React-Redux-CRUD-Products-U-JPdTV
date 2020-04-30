@@ -1,9 +1,7 @@
 /** Las funcionalidades definidas aquí generalmente son consumidas por las vistas/components */
-export const actionCreateProduct = () => {
+export const actionCreateProduct = ( product ) => {
     
-    console .group( 'products-actions' );
-    console .log( 'Desde actionCreateProduct!' );
-    console .groupEnd();
+    console .log( 'product', product );
     
     return {      
         type: ""   

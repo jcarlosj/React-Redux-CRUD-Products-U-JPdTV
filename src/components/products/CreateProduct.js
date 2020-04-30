@@ -28,15 +28,19 @@ const CreateProduct = () => {
 
     const dispatch = useDispatch();     // Retorna y crea una funcion dispatch
 
-    const addProduct = () => dispatch( actionCreateProduct() );    // Dispatch se comunica, llama o ejecuta las funciones de los actions
+    const addProduct = ( product ) => dispatch( actionCreateProduct( product ) );    // Dispatch se comunica, llama o ejecuta las funciones de los actions
  
     const onSubmitFormData = event => {
         event .preventDefault();
 
-        // TODO: Validar campos del formulario
+        // TODO: Valida campos del formulario
         // TODO: Validar que no hay errores
         /** Agrega nuevo producto */
-        addProduct();
+        addProduct({
+            name,
+            price
+        });
+        
     }
 
     return (

@@ -8,13 +8,13 @@ const CreateProduct = () => {
                     <div className="card-body">
                         <h2>Crea Producto</h2>
                         <form>
-                            <div class="form-group">
-                                <label for="name">Nombre</label>
-                                <input type="text" class="form-control" id="name" placeholder="Nombre del producto" />
+                            <div className="form-group">
+                                <label htmlFor="name">Nombre</label>
+                                <input type="text" className="form-control" id="name" placeholder="Nombre del producto" />
                             </div>
-                            <div class="form-group">
-                                <label for="price">Precio</label>
-                                <input type="number" class="form-control" id="price" />
+                            <div className="form-group">
+                                <label htmlFor="price">Precio</label>
+                                <input type="number" className="form-control" id="price" />
                             </div>  
                             <button
                                 type="button"

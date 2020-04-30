@@ -6,16 +6,20 @@ import { actionCreateProduct } from '../../actions/products-actions';
 
 const CreateProduct = () => {
 
+    const 
     /** Define Component State */
-    const [ dataForm, setDataForm ] = useState({
-        name: '',
-        price: 0
-    });
-
-    const loading = useSelector( state => state .products .loading );   // Accede al State 'products' del Store
-    const error = useSelector( state => state .products .error );       // Accede al State 'products' del Store
-
-    const { name, price } = dataForm;   // Destructuring Data Form
+        [ dataForm, setDataForm ] = useState({
+            name: '',
+            price: 0
+        }),
+    /** Accede al State 'products' del Store */
+        loading = useSelector( state => state .products .loading ),     // para la propiedad loading   
+        error = useSelector( state => state .products .error ),         // para la propiedad error
+    /** Accede a los actions y lo comunica al Componente  */
+        dispatch = useDispatch(),                                                  // Retorna y crea una funcion dispatch
+        addProduct = ( product ) => dispatch( actionCreateProduct( product ) ),    // Dispatch ejecuta las funciones de los actions
+    /** Destructuring el State del Componente */
+        { name, price } = dataForm;                                     
  
     /** Update State when you change the value of the field in the form  */
     const updateState = event => {
@@ -28,10 +32,6 @@ const CreateProduct = () => {
         });
 
     }
-
-    const dispatch = useDispatch();     // Retorna y crea una funcion dispatch
-
-    const addProduct = ( product ) => dispatch( actionCreateProduct( product ) );    // Dispatch se comunica, llama o ejecuta las funciones de los actions
  
     const onSubmitFormData = event => {
         event .preventDefault();

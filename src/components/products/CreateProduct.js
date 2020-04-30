@@ -1,10 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 /** Actions (Redux) */
 import { actionCreateProduct } from '../../actions/products-actions';
 
 const CreateProduct = () => {
+
+    /** Define Component State */
+    const [ dataForm, setDataForm ] = useState({
+        name: '',
+        price: 0
+    });
+
+    const { name, price } = dataForm;   // Destructuring Data Form
+ 
+    /** Update State when you change the value of the field in the form  */
+    const updateState = event => {
+
+        setDataForm({
+            ...dataForm,
+            [ event .target .name ]: ( event .target .name == 'price' )         /** Valida si el campo es price */
+                                        ?   Number( event .target .value )      /** Si se cumple, convierte la entrada en un Number */
+                                        :   event .target .value                /** Si no lo mantiene como viene */
+        });
+
+    }
 
     const dispatch = useDispatch();     // Retorna y crea una funcion dispatch
 
@@ -30,11 +50,26 @@ const CreateProduct = () => {
                         >
                             <div className="form-group">
                                 <label htmlFor="name">Nombre</label>
-                                <input type="text" className="form-control" id="name" placeholder="Nombre del producto" />
+                                <input 
+                                    name="name"
+                                    type="text" 
+                                    className="form-control" 
+                                    id="name" 
+                                    placeholder="Nombre del producto" 
+                                    value={ name }
+                                    onChange={ updateState }
+                                />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="price">Precio</label>
-                                <input type="number" className="form-control" id="price" />
+                                <input 
+                                    name="price"
+                                    type="number" 
+                                    className="form-control" 
+                                    id="price" 
+                                    value={ price }
+                                    onChange={ updateState }
+                                />
                             </div>  
                             <button
                                 type="submit"

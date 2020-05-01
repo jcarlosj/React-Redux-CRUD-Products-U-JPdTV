@@ -1,6 +1,9 @@
 import React from 'react';
+
+/** Dependencies */
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import Swal from 'sweetalert2';             
 
 /** Actions (Redux) */
 import { actionDeleteProduct } from '../../actions/products-actions';
@@ -13,8 +16,25 @@ const Product = ({ product }) => {
         dispatch = useDispatch();
 
     const confirmDelete = id => {
-        // TODO: Verificar la confirmación de borrado
-        dispatch( actionDeleteProduct( id ) );
+
+        /** Verifica confirmación de borrado */ 
+        Swal .fire({
+            title: '¿Esta seguro?',
+            text: "Esta acción no se puede revertir!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, Eliminalo!',
+            cancelButtonText: "Cancelar"
+          }) .then( ( result ) => {
+
+            if ( result .value ) {
+                dispatch( actionDeleteProduct( id ) );      // Ejecuta el action
+            }
+
+        });
+
     }
 
     return(

@@ -94,6 +94,12 @@ export const actionDeleteProduct = productId => {
             const response = await clientAxios .delete( `/products/${ productId }` );
             dispatch( deleteByIdSuccessfully() );
 
+            Swal .fire(
+                'Eliminado!',
+                'Producto eliminado exitosamente.',
+                'success'
+            );
+
         } catch ( error ) {
             console .log( error );
             dispatch( errorDeletingById() );

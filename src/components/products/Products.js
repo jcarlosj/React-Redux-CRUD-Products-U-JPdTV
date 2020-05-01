@@ -1,6 +1,20 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+/** Actions (Redux) */
+import { actionGetProducts } from '../../actions/products-actions';
 
 const Products = () => {
+    /** Accede a los actions y lo comunica al Componente  */
+    const dispatch = useDispatch();                                   // Retorna y crea una funcion dispatch
+
+    useEffect( () => {
+        /** Consultar API cuando el componente cargue */
+        const getProducts = () => dispatch( actionGetProducts() );    // Dispatch ejecuta las funciones de los actions
+        getProducts();                                                // Ejecuta la consulta
+    }, [] );
+
+
     return (
         <Fragment>
             <h2 className="text-center mt-5">Productos</h2>

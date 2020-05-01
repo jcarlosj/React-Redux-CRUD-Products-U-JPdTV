@@ -4,6 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 /** Actions (Redux) */
 import { actionGetProducts } from '../../actions/products-actions';
 
+/** Components */
+import Product from './Product';
+
+/* Component */
 const Products = () => {
     /** Accede a los actions y lo comunica al Componente  */
     const dispatch = useDispatch();                                   // Retorna y crea una funcion dispatch
@@ -14,6 +18,8 @@ const Products = () => {
         getProducts();                                                // Ejecuta la consulta
     }, [] );
 
+    /** Accede al State 'products' del Store */
+    const products = useSelector( state => state .products .products );    // para la propiedad products
 
     return (
         <Fragment>
@@ -21,17 +27,22 @@ const Products = () => {
             <table className="table mt-4">
                 <thead className="thead-light">    
                     <tr>
+                        <th scope="col">#</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Precio</th>
-                        <th scope="col"></th>
+                        <th scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Laptop</td>
-                        <td>300</td>
-                        <td></td>
-                    </tr>
+                    { products .length === 0 
+                        ?   <p>No hay productos</p>
+                        :   products .map( product => (
+                            <Product 
+                                key={ product .id } 
+                                product={ product }
+                            />
+                        ))
+                    }
                 </tbody>
             </table>
         </Fragment>

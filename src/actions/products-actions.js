@@ -87,9 +87,17 @@ const errorGettingAll = () => ({
 
 /** Elimina un producto seleccionado */
 export const actionDeleteProduct = productId => {
-    return ( dispatch ) => {
-        console .log( 'ID', productId );
+    return async ( dispatch ) => {
         dispatch( deleteById( productId ) );
+
+        try {
+            const response = await clientAxios .delete( `/products/${ productId }` );
+            dispatch( deleteByIdSuccessfully() );
+
+        } catch ( error ) {
+            console .log( error );
+            dispatch( errorDeletingById() );
+        }
     }
 }
 
@@ -98,3 +106,12 @@ const deleteById = id => ({
     type: DELETE_PRODUCT,
     payload: id
 });
+
+const deleteByIdSuccessfully = () => ({
+    type: DELETE_PRODUCT_SUCCESSFULLY
+});
+
+const errorDeletingById = () => ({
+    type: ERROR_DELETING_PRODUCT,
+    payload: true
+})

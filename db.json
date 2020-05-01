@@ -26,34 +26,9 @@
       "price": "200"
     },
     {
-      "name": "Helaitu de cuchulate",
-      "price": 100,
-      "id": 6
-    },
-    {
-      "name": "Helaitu de mandaina",
-      "price": 100,
-      "id": 7
-    },
-    {
-      "name": "Helaitu de Mangu",
-      "price": 11,
-      "id": 8
-    },
-    {
-      "name": "",
-      "price": 0,
-      "id": 9
-    },
-    {
       "name": "Mani con pasas",
       "price": 22,
       "id": 10
-    },
-    {
-      "name": "Fujito de lulu",
-      "price": 90,
-      "id": 11
     }
   ]
 }

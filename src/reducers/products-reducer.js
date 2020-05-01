@@ -58,6 +58,18 @@ export default ( state = initialState, action ) => {
                 ...state,
                 selectedProductId: action .payload
             }
+        case DELETE_PRODUCT_SUCCESSFULLY:
+            return {
+                ...state,
+                products: state .products .filter( product => state .selectedProductId !== product .id ),
+                selectedProductId: null
+            }
+        case ERROR_DELETING_PRODUCT:
+            return {
+                ...state,
+                loading: false,
+                error: action .payload
+            }
         default: 
             return state;
     }

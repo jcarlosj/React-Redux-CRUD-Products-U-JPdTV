@@ -44,6 +44,12 @@ export default ( state = initialState, action ) => {
                 loading: false,
                 error: null
             }
+        case ERROR_GETTING_PRODUCTS:
+            return {
+                ...state,
+                loading: false,
+                error: action .payload
+            }
         default: 
             return state;
     }

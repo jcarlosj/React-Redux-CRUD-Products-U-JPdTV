@@ -61,6 +61,7 @@ export const actionGetProducts = () => {
             dispatch( getAllSuccessfully( response .data ) );
         } catch ( error ) {
             console .log( error );
+            dispatch( errorGettingAll() );
         }
     }
 }
@@ -74,4 +75,9 @@ const getAll = () => ({
 const getAllSuccessfully = products => ({
     type: GET_PRODUCTS_SUCCESSFULLY,
     payload: products
+});
+
+const errorGettingAll = () => ({
+    type: ERROR_GETTING_PRODUCTS,
+    payload: true
 });

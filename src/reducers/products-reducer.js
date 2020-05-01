@@ -1,4 +1,7 @@
-import { ADD_PRODUCT, SUCCESSFULLY_ADDED_PRODUCT, ERROR_ADDING_PRODUCT } from '../types';
+import { 
+    ADD_PRODUCT, SUCCESSFULLY_ADDED_PRODUCT, ERROR_ADDING_PRODUCT,
+    GET_PRODUCTS, GET_PRODUCTS_SUCCESSFULLY, ERROR_GETTING_PRODUCTS
+} from '../types';
 
 /** Cada Reducer tiene su propio State */
 const initialState = {
@@ -10,6 +13,7 @@ const initialState = {
 export default ( state = initialState, action ) => {
     console .log( 'products-reducer', action );
     switch( action .type ) {
+        /** Create */
         case ADD_PRODUCT:
             return {
                 ...state,
@@ -26,6 +30,12 @@ export default ( state = initialState, action ) => {
                 ...state,
                 loading: false,
                 error: action .payload
+            }
+        /** Read */
+        case GET_PRODUCTS:
+            return {
+                ...state,
+                loading: action .payload
             }
         default: 
             return state;

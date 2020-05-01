@@ -1,12 +1,13 @@
-import { ADD_PRODUCT, SUCCESSFULLY_ADDED_PRODUCT, ERROR_ADDING_PRODUCT } from '../types';
+import { 
+    ADD_PRODUCT, SUCCESSFULLY_ADDED_PRODUCT, ERROR_ADDING_PRODUCT,
+    GET_PRODUCTS, GET_PRODUCTS_SUCCESSFULLY, ERROR_GETTING_PRODUCTS
+} from '../types';
 
 import clientAxios from '../config/axios';  // Client Axios
 import Swal from 'sweetalert2';             // Dependency
 
 /** Las funcionalidades definidas aquí generalmente son consumidas por las vistas/components */
 export const actionCreateProduct = ( product ) => {
-
-    console .log( 'product', product );
     
     return async ( dispatch ) => {      
         dispatch( add() );
@@ -48,4 +49,17 @@ const addedSuccessfully = product => ({     // Agrega producto al State del Redu
 const errorAdding = stateError => ({        // Cambia estado del State del Reducer
     type: ERROR_ADDING_PRODUCT,
     payload: stateError
+});
+
+export const actionGetProducts = () => {
+
+    return async ( dispatch ) => {
+        dispatch( getAll() );
+    }
+}
+
+/** Actions */
+const getAll = () => ({
+    type: GET_PRODUCTS,
+    payload: true
 });

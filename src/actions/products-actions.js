@@ -55,6 +55,13 @@ export const actionGetProducts = () => {
 
     return async ( dispatch ) => {
         dispatch( getAll() );
+
+        try {
+            const response = await clientAxios .get( '/products' );
+            dispatch( getAllSuccessfully( response .data ) );
+        } catch ( error ) {
+            console .log( error );
+        }
     }
 }
 
@@ -62,4 +69,9 @@ export const actionGetProducts = () => {
 const getAll = () => ({
     type: GET_PRODUCTS,
     payload: true
+});
+
+const getAllSuccessfully = products => ({
+    type: GET_PRODUCTS_SUCCESSFULLY,
+    payload: products
 });

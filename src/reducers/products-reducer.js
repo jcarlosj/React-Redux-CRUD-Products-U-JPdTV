@@ -37,6 +37,13 @@ export default ( state = initialState, action ) => {
                 ...state,
                 loading: action .payload
             }
+        case GET_PRODUCTS_SUCCESSFULLY:
+            return {
+                ...state,
+                products: action .payload,
+                loading: false,
+                error: null
+            }
         default: 
             return state;
     }

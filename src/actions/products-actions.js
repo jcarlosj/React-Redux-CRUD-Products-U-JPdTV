@@ -1,12 +1,14 @@
+/** Las funcionalidades definidas aquí generalmente son consumidas por las vistas/components */
 import { 
     ADD_PRODUCT, SUCCESSFULLY_ADDED_PRODUCT, ERROR_ADDING_PRODUCT,
-    GET_PRODUCTS, GET_PRODUCTS_SUCCESSFULLY, ERROR_GETTING_PRODUCTS
+    GET_PRODUCTS, GET_PRODUCTS_SUCCESSFULLY, ERROR_GETTING_PRODUCTS,
+    DELETE_PRODUCT, DELETE_PRODUCT_SUCCESSFULLY, ERROR_DELETING_PRODUCT
 } from '../types';
 
 import clientAxios from '../config/axios';  // Client Axios
 import Swal from 'sweetalert2';             // Dependency
 
-/** Las funcionalidades definidas aquí generalmente son consumidas por las vistas/components */
+/** Crea un producto nuevo */
 export const actionCreateProduct = ( product ) => {
     
     return async ( dispatch ) => {      
@@ -51,6 +53,7 @@ const errorAdding = stateError => ({        // Cambia estado del State del Reduc
     payload: stateError
 });
 
+/** Obtiene los productos */
 export const actionGetProducts = () => {
 
     return async ( dispatch ) => {
@@ -80,4 +83,18 @@ const getAllSuccessfully = products => ({
 const errorGettingAll = () => ({
     type: ERROR_GETTING_PRODUCTS,
     payload: true
+});
+
+/** Elimina un producto seleccionado */
+export const actionDeleteProduct = productId => {
+    return ( dispatch ) => {
+        console .log( 'ID', productId );
+        dispatch( deleteById( productId ) );
+    }
+}
+
+/** Actions */
+const deleteById = id => ({
+    type: DELETE_PRODUCT,
+    payload: id
 });

@@ -47,7 +47,7 @@ const Products = () => {
                 <tbody>
                     { products .length === 0 
                         ?   <tr>
-                                <td scope="col" colspan="4" className="text-center mt-2">No hay productos</td>
+                                <td scope="col" colSpan="4" className="text-center mt-2">No hay productos</td>
                             </tr>
                         :   products .map( product => (
                             <Product 

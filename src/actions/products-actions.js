@@ -3,7 +3,7 @@ import {
     ADD_PRODUCT, SUCCESSFULLY_ADDED_PRODUCT, ERROR_ADDING_PRODUCT,
     GET_PRODUCTS, GET_PRODUCTS_SUCCESSFULLY, ERROR_GETTING_PRODUCTS,
     DELETE_PRODUCT, DELETE_PRODUCT_SUCCESSFULLY, ERROR_DELETING_PRODUCT,
-    EDIT_PRODUCT, EDIT_PRODUCT_SUCCESSFULLY, PRODUCT_EDIT_ERROR
+    SELECT_PRODUCT_TO_EDIT, EDIT_PRODUCT, EDIT_PRODUCT_SUCCESSFULLY, PRODUCT_EDIT_ERROR
 } from '../types';
 
 import clientAxios from '../config/axios';  // Client Axios
@@ -123,10 +123,23 @@ const errorDeletingById = () => ({
     payload: true
 });
 
-/** Editar un producto seleccionado */
-export const actionEditProduct = product => {
+/** Seleccionar un producto para Editar */
+export const actionSelectProductToEdit = product => {
     return ( dispatch ) => {
-        dispatch( edit( product ) );
+        dispatch( getProductToEdit( product ) );
+    }
+}
+
+/** Actions */
+const getProductToEdit = product => ({
+    type: SELECT_PRODUCT_TO_EDIT,
+    payload: product
+});
+
+/** Editar un producto seleccionado */
+export const actionEditProduct = () => {
+    return ( dispatch ) => {
+        dispatch();
     }
 }
 
@@ -134,4 +147,5 @@ export const actionEditProduct = product => {
 const edit = product => ({
     type: EDIT_PRODUCT,
     payload: product
+
 });

@@ -2,7 +2,7 @@ import {
     ADD_PRODUCT, SUCCESSFULLY_ADDED_PRODUCT, ERROR_ADDING_PRODUCT,
     GET_PRODUCTS, GET_PRODUCTS_SUCCESSFULLY, ERROR_GETTING_PRODUCTS,
     DELETE_PRODUCT, DELETE_PRODUCT_SUCCESSFULLY, ERROR_DELETING_PRODUCT,
-    EDIT_PRODUCT, EDIT_PRODUCT_SUCCESSFULLY, PRODUCT_EDIT_ERROR
+    SELECT_PRODUCT_TO_EDIT, EDIT_PRODUCT, EDIT_PRODUCT_SUCCESSFULLY, PRODUCT_EDIT_ERROR
 } from '../types';
 
 /** Cada Reducer tiene su propio State */
@@ -55,7 +55,7 @@ export default ( state = initialState, action ) => {
                 error: action .payload
             }
         /** Update */
-        case EDIT_PRODUCT:
+        case SELECT_PRODUCT_TO_EDIT:
             return {
                 ...state,
                 selectedProduct: action .payload

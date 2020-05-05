@@ -137,9 +137,17 @@ const getProductToEdit = product => ({
 });
 
 /** Editar un producto seleccionado */
-export const actionEditProduct = () => {
-    return ( dispatch ) => {
-        dispatch();
+export const actionEditProduct = product => {
+    return async ( dispatch ) => {
+        dispatch( edit( product ) );
+
+        try {
+            const product = await clientAxios .put( `/product/edit/${ product .id }`, product );
+            console .log( product );
+
+        } catch ( error ) {
+            console .log( error );
+        }
     }
 }
 

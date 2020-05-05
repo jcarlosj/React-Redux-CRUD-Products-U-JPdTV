@@ -1,12 +1,12 @@
 import React from 'react';
 
 /** Dependencies */
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';             
 
 /** Actions (Redux) */
-import { actionDeleteProduct } from '../../actions/products-actions';
+import { actionDeleteProduct, actionEditProduct } from '../../actions/products-actions';
 
 const Product = ({ product }) => {
 
@@ -40,6 +40,7 @@ const Product = ({ product }) => {
 
     /** Redireccionar de forma programada */
     const scheduledRedirect = product => {
+        dispatch( actionEditProduct( product ) );
         history .push( `/product/edit/${ product .id }` );
     }
 

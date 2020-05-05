@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 /** Actions (Redux) */
 import { actionCreateProduct } from '../../actions/products-actions';
-import { actionShowAlert } from '../../actions/alert-actions';
+import { actionShowAlert, actionHideAlert } from '../../actions/alert-actions';
 
 const CreateProduct = ({ history }) => {
 
@@ -50,7 +50,8 @@ const CreateProduct = ({ history }) => {
 
             return;
         }
-        // TODO: Validar que no hay errores
+        dispatch( actionHideAlert() );      // Execute action for update state
+
         /** Agrega nuevo producto */
         addProduct({
             name,

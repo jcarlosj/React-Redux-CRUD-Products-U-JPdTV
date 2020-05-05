@@ -4,6 +4,9 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+/** Actions (Redux) */
+import { actionEditProduct } from '../../actions/products-actions';
+
 const EditProduct = () => {
 
     const 
@@ -13,7 +16,9 @@ const EditProduct = () => {
             price: 0
         }),
     /** Accede al State 'products' del Store */
-        selectedProduct = useSelector( state => state .products .selectedProduct ),    // Dispatch ejecuta las funciones de los actions
+        selectedProduct = useSelector( state => state .products .selectedProduct ),     // Dispatch ejecuta las funciones de los actions
+    /** Accede a los actions y lo comunica al Componente  */
+        dispatch = useDispatch(),                                                       // Retorna y crea una funcion dispatch
     /** Hook del Router para Redireccion */
         history = useHistory();      
 
@@ -47,13 +52,14 @@ const EditProduct = () => {
         // TODO: Valida campos del formulario
         // TODO: Validar que no hay errores
         /** Edita producto */
+        dispatch( actionEditProduct( dataForm ) );
 
         history .push( '/' );   // Redirecciona a listado de productos
         
     }
 
     /** Destructuring el State del Componente */
-    const { id, name, price } = dataForm;
+    const { name, price } = dataForm;
 
     return (
         <div className="row justify-content-center">

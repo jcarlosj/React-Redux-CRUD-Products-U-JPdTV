@@ -142,8 +142,8 @@ export const actionEditProduct = product => {
         dispatch( edit( product ) );
 
         try {
-            const product = await clientAxios .put( `/product/edit/${ product .id }`, product );
-            console .log( product );
+            const editedProduct = await clientAxios .put( `/products/${ product .id }`, product );
+            console .log( 'Edited product', editedProduct );
 
         } catch ( error ) {
             console .log( error );

@@ -2,8 +2,8 @@
   "products": [
     {
       "id": 1,
-      "name": "Jugo de Zanahoria",
-      "price": "31111"
+      "name": "Jugo de Mora",
+      "price": 900
     },
     {
       "id": 2,

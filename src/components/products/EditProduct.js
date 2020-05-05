@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 
 /** Actions (Redux) */
 import { actionEditProduct } from '../../actions/products-actions';
+import { actionShowAlert, actionHideAlert } from '../../actions/alert-actions';
 
 const EditProduct = () => {
 
@@ -17,6 +18,7 @@ const EditProduct = () => {
         }),
     /** Accede al State 'products' del Store */
         selectedProduct = useSelector( state => state .products .selectedProduct ),     // Dispatch ejecuta las funciones de los actions
+        alert = useSelector( state => state .alerts .alert ),
     /** Accede a los actions y lo comunica al Componente  */
         dispatch = useDispatch(),                                                       // Retorna y crea una funcion dispatch
     /** Hook del Router para Redireccion */
@@ -49,8 +51,20 @@ const EditProduct = () => {
     const onSubmitFormData = event => {
         event .preventDefault();
 
-        // TODO: Valida campos del formulario
-        // TODO: Validar que no hay errores
+        /** Valida campos del formulario */
+        if( name .trim() === '' || price <= 0 ) {
+
+            const response = {
+                message: 'Todos los campos son obligatorios',
+                classes: 'alert alert-danger text-center p-3'
+            }
+
+            dispatch( actionShowAlert( response ) );
+
+            return;
+        }
+        dispatch( actionHideAlert() );      // Execute action for update state
+
         /** Edita producto */
         dispatch( actionEditProduct( dataForm ) );
 
@@ -70,6 +84,10 @@ const EditProduct = () => {
                         <form
                             onSubmit={ onSubmitFormData }
                         >
+                            { alert 
+                                ?   <p className={ alert .classes }>{ alert .message }</p>
+                                :   null
+                            }
                             <div className="form-group">
                                 <label htmlFor="name">Nombre</label>
                                 <input 

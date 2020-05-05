@@ -142,7 +142,7 @@ export const actionEditProduct = product => {
         dispatch( edit( product ) );
 
         try {
-            const editedProduct = await clientAxios .put( `/product/${ product .id }`, product );
+            const editedProduct = await clientAxios .put( `/products/${ product .id }`, product );
             console .log( 'Edited product', editedProduct );
 
             dispatch( editSuccessfully( product ) );

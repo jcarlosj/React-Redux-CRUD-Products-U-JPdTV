@@ -12,8 +12,8 @@
     },
     {
       "id": 3,
-      "name": "Jugo de Naranja",
-      "price": "300"
+      "name": "Jugo de Mandarina",
+      "price": 1300
     },
     {
       "id": 4,
@@ -22,8 +22,13 @@
     },
     {
       "id": 5,
-      "name": "Jugo de Fresa",
-      "price": "200"
+      "name": "Jugo de Frambuesas",
+      "price": 3200
+    },
+    {
+      "name": "Jugo Borojo",
+      "price": 2500,
+      "id": 6
     }
   ]
 }

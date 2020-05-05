@@ -142,18 +142,29 @@ export const actionEditProduct = product => {
         dispatch( edit( product ) );
 
         try {
-            const editedProduct = await clientAxios .put( `/products/${ product .id }`, product );
+            const editedProduct = await clientAxios .put( `/product/${ product .id }`, product );
             console .log( 'Edited product', editedProduct );
+
+            dispatch( editSuccessfully( product ) );
 
         } catch ( error ) {
             console .log( error );
+            dispatch( productEditError( true ) );
         }
     }
 }
 
 /** Actions */
 const edit = product => ({
-    type: EDIT_PRODUCT,
-    payload: product
+    type: EDIT_PRODUCT
+});
 
+const editSuccessfully = product => ({
+    type: EDIT_PRODUCT_SUCCESSFULLY,
+    payload: product
+});
+
+const productEditError = value => ({
+    type: PRODUCT_EDIT_ERROR,
+    payload: value
 });

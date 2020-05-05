@@ -7,8 +7,8 @@
     },
     {
       "id": 2,
-      "name": "Jugo de Naranja",
-      "price": "1"
+      "name": "Jugo de Lulo",
+      "price": 1000
     },
     {
       "id": 3,
@@ -17,8 +17,8 @@
     },
     {
       "id": 4,
-      "name": "Rib Eye 800g",
-      "price": "200"
+      "name": "Jugo de Guanabana",
+      "price": 1200
     },
     {
       "id": 5,

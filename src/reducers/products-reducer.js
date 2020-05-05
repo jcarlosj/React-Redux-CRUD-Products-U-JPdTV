@@ -2,7 +2,7 @@ import {
     ADD_PRODUCT, SUCCESSFULLY_ADDED_PRODUCT, ERROR_ADDING_PRODUCT,
     GET_PRODUCTS, GET_PRODUCTS_SUCCESSFULLY, ERROR_GETTING_PRODUCTS,
     DELETE_PRODUCT, DELETE_PRODUCT_SUCCESSFULLY, ERROR_DELETING_PRODUCT,
-    SELECT_PRODUCT_TO_EDIT, EDIT_PRODUCT, EDIT_PRODUCT_SUCCESSFULLY, PRODUCT_EDIT_ERROR
+    SELECT_PRODUCT_TO_EDIT, EDIT_PRODUCT_SUCCESSFULLY, PRODUCT_EDIT_ERROR
 } from '../types';
 
 /** Cada Reducer tiene su propio State */
@@ -59,6 +59,22 @@ export default ( state = initialState, action ) => {
             return {
                 ...state,
                 selectedProduct: action .payload
+            }
+        case EDIT_PRODUCT_SUCCESSFULLY:
+            return {
+                ...state,
+                selectedProduct: null,
+                products: state .products .map( product => 
+                        action .payload .id === product .id
+                            ?   product = action .payload
+                            :   product
+                    )
+            }
+        case PRODUCT_EDIT_ERROR:
+            return {
+                ...state,
+                loading: false,
+                error: action .payload
             }
         /** Delete */
         case DELETE_PRODUCT:

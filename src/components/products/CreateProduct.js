@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 /** Actions (Redux) */
 import { actionCreateProduct } from '../../actions/products-actions';
+import { actionShowAlert } from '../../actions/alert-actions';
 
 const CreateProduct = ({ history }) => {
 
@@ -36,7 +37,18 @@ const CreateProduct = ({ history }) => {
     const onSubmitFormData = event => {
         event .preventDefault();
 
-        // TODO: Valida campos del formulario
+        /** Valida campos del formulario */
+        if( name .trim() === '' || price <= 0 ) {
+
+            const response = {
+                message: 'Todos los campos son obligatorios',
+                classes: 'alert alert-danger text-center p-3'
+            }
+
+            dispatch( actionShowAlert( response ) );
+
+            return;
+        }
         // TODO: Validar que no hay errores
         /** Agrega nuevo producto */
         addProduct({

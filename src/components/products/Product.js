@@ -1,7 +1,7 @@
 import React from 'react';
 
 /** Dependencies */
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';             
 
@@ -13,7 +13,8 @@ const Product = ({ product }) => {
     const 
         { id, name, price } = product,
     /** Accede a los actions y lo comunica al Componente  */
-        dispatch = useDispatch();
+        dispatch = useDispatch(),
+        history = useHistory();
 
     const confirmDelete = id => {
 
@@ -37,16 +38,22 @@ const Product = ({ product }) => {
 
     }
 
+    /** Redireccionar de forma programada */
+    const scheduledRedirect = product => {
+        history .push( `/product/edit/${ product .id }` );
+    }
+
     return(
         <tr>
             <td>{ id }</td>
             <td>{ name }</td>
             <td>{ price }</td>
             <td>
-                <Link 
-                    to={`/product/edit/${ id }`}
+                <button 
+                    type="button"
                     className="btn btn-primary mr-2"
-                >Editar</Link>
+                    onClick={ () => scheduledRedirect( product ) } 
+                >Editar</button>
                 <button
                     type="button"
                     className="btn btn-danger"

@@ -13,9 +13,10 @@ const CreateProduct = ({ history }) => {
             name: '',
             price: 0
         }),
-    /** Accede al State 'products' del Store */
+    /** Accede al State 'products' & 'alert' del Store */
         loading = useSelector( state => state .products .loading ),     // para la propiedad loading   
         error = useSelector( state => state .products .error ),         // para la propiedad error
+        alert = useSelector( state => state .alerts .alert ),
     /** Accede a los actions y lo comunica al Componente  */
         dispatch = useDispatch(),                                                  // Retorna y crea una funcion dispatch
         addProduct = ( product ) => dispatch( actionCreateProduct( product ) ),    // Dispatch ejecuta las funciones de los actions
@@ -69,6 +70,10 @@ const CreateProduct = ({ history }) => {
                         <form
                             onSubmit={ onSubmitFormData }
                         >
+                            { alert 
+                                ?   <p className={ alert .classes }>{ alert .message }</p>
+                                :   null
+                            }
                             <div className="form-group">
                                 <label htmlFor="name">Nombre</label>
                                 <input 

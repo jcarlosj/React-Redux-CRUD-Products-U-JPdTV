@@ -34,6 +34,7 @@ const EditProduct = () => {
         }
         /** Update State 'setDataForm' */
         setDataForm( selectedProduct );     // Actualiza State
+        // eslint-disable-next-line
     }, [ selectedProduct ] );
 
     /** Get form values when they change */
@@ -41,7 +42,7 @@ const EditProduct = () => {
         
         setDataForm({
             ...dataForm,
-            [ event .target .name ]: ( event .target .name == 'price' )         /** Valida si el campo es price */
+            [ event .target .name ]: ( event .target .name === 'price' )         /** Valida si el campo es price */
                                         ?   Number( event .target .value )      /** Si se cumple, convierte la entrada en un Number */
                                         :   event .target .value                /** Si no lo mantiene como viene */
         });

@@ -28,7 +28,7 @@ const CreateProduct = ({ history }) => {
 
         setDataForm({
             ...dataForm,
-            [ event .target .name ]: ( event .target .name == 'price' )         /** Valida si el campo es price */
+            [ event .target .name ]: ( event .target .name === 'price' )         /** Valida si el campo es price */
                                         ?   Number( event .target .value )      /** Si se cumple, convierte la entrada en un Number */
                                         :   event .target .value                /** Si no lo mantiene como viene */
         });

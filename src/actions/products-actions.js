@@ -92,7 +92,7 @@ export const actionDeleteProduct = productId => {
         dispatch( deleteById( productId ) );
 
         try {
-            const response = await clientAxios .delete( `/products/${ productId }` );
+            await clientAxios .delete( `/products/${ productId }` );
             dispatch( deleteByIdSuccessfully() );
 
             Swal .fire(

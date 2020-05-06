@@ -16,6 +16,7 @@ const Products = () => {
         /** Consultar API cuando el componente cargue */
         const getProducts = () => dispatch( actionGetProducts() );    // Dispatch ejecuta las funciones de los actions
         getProducts();                                                // Ejecuta la consulta
+        // eslint-disable-next-line
     }, [] );
 
     /** Accede al State 'products' del Store */
@@ -47,7 +48,7 @@ const Products = () => {
                 <tbody>
                     { products .length === 0 
                         ?   <tr>
-                                <td scope="col" colSpan="4" className="text-center mt-2">No hay productos</td>
+                                <td colSpan="4" className="text-center mt-2">No hay productos</td>
                             </tr>
                         :   products .map( product => (
                             <Product 
